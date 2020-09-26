@@ -74,19 +74,3 @@ func getVote(ctx sdk.Context, path []string, k Keeper) (res []byte, sdkError err
 
 	return res, nil
 }
-
-// Get creator of the item
-func (k Keeper) GetOwner(ctx sdk.Context, key string) sdk.AccAddress {
-	vote, err := k.GetVote(ctx, key)
-	if err != nil {
-		return nil
-	}
-	return vote.Creator
-}
-
-
-// Check if the key exists in the store
-func (k Keeper) Exists(ctx sdk.Context, key string) bool {
-	store := ctx.KVStore(k.storeKey)
-	return store.Has([]byte(types.VotePrefix + key))
-}
