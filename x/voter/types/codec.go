@@ -7,6 +7,9 @@ import (
 // RegisterCodec registers concrete types on codec
 func RegisterCodec(cdc *codec.Codec) {
   // this line is used by starport scaffolding
+		cdc.RegisterConcrete(MsgCreateVote{}, "voter/CreateVote", nil)
+		cdc.RegisterConcrete(MsgSetVote{}, "voter/SetVote", nil)
+		cdc.RegisterConcrete(MsgDeleteVote{}, "voter/DeleteVote", nil)
 		cdc.RegisterConcrete(MsgCreatePoll{}, "voter/CreatePoll", nil)
 		cdc.RegisterConcrete(MsgSetPoll{}, "voter/SetPoll", nil)
 		cdc.RegisterConcrete(MsgDeletePoll{}, "voter/DeletePoll", nil)
