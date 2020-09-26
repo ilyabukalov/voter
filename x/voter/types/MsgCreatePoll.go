@@ -12,10 +12,10 @@ type MsgCreatePoll struct {
   ID      string
   Creator sdk.AccAddress `json:"creator" yaml:"creator"`
   Title string `json:"title" yaml:"title"`
-  Options string `json:"options" yaml:"options"`
+  Options []string `json:"options" yaml:"options"`
 }
 
-func NewMsgCreatePoll(creator sdk.AccAddress, title string, options string) MsgCreatePoll {
+func NewMsgCreatePoll(creator sdk.AccAddress, title string, options []string) MsgCreatePoll {
   return MsgCreatePoll{
     ID: uuid.New().String(),
 		Creator: creator,

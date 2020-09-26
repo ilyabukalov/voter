@@ -20,7 +20,7 @@ func GetCmdCreatePoll(cdc *codec.Codec) *cobra.Command {
 		Args:  cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			argsTitle := string(args[0])
-			argsOptions := string(args[1])
+			argsOptions := args[1:len(args)]
 			
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
 			inBuf := bufio.NewReader(cmd.InOrStdin())
@@ -44,7 +44,7 @@ func GetCmdSetPoll(cdc *codec.Codec) *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			id := args[0]
 			argsTitle := string(args[1])
-			argsOptions := string(args[2])
+			argsOptions := args[2:len(args)]
 			
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
 			inBuf := bufio.NewReader(cmd.InOrStdin())
